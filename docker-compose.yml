@@ -3,14 +3,21 @@ services:
   web:
     build: 
       context: .
-      target: builder
+      target: runner
     ports:
       - "3000:3000"
-    env_file:
-      - .env.local
     environment:
-      - NODE_ENV=development
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next 
+      - NODE_ENV=production
+      - PROJECT_ID=${PROJECT_ID}
+      - API_KEY=${API_KEY}
+      - DATABASE_ID=${DATABASE_ID}
+      - PATIENT_COLLECTION_ID=${PATIENT_COLLECTION_ID}
+      - DOCTOR_COLLECTION_ID=${DOCTOR_COLLECTION_ID}
+      - APPOINTMENT_COLLECTION_ID=${APPOINTMENT_COLLECTION_ID}
+      - NEXT_PUBLIC_BUCKET_ID=${NEXT_PUBLIC_BUCKET_ID}
+      - NEXT_PUBLIC_ENDPOINT=${NEXT_PUBLIC_ENDPOINT}
+      - NEXT_PUBLIC_ADMIN_PASSKEY=${NEXT_PUBLIC_ADMIN_PASSKEY}
+      - NEXT_PUBLIC_SERVICEID=${NEXT_PUBLIC_SERVICEID}
+      - NEXT_PUBLIC_TEMPLATEID=${NEXT_PUBLIC_TEMPLATEID}
+      - NEXT_PUBLIC_APIKEY=${NEXT_PUBLIC_APIKEY}
+    restart: unless-stopped 
