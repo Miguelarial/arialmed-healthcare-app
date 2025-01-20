@@ -1,16 +1,6 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { StatusBadge } from "../StatusBadge"
 import { formatDateTime } from "@/lib/utils"
 import Image from "next/image"
@@ -26,7 +16,10 @@ export const columns: ColumnDef<Appointment>[] = [
     {
         accessorKey: "patient",
         header: "Patient",
-        cell: ({ row }) => <p className="text-14-medium">{row.original.patient.name}</p>
+        cell: ({ row }) => {
+            const patientName = row.original.patient?.name || 'No patient name';
+            return <p className="text-14-medium">{patientName}</p>
+        }
     },
     {
         accessorKey: "status",
@@ -78,6 +71,9 @@ export const columns: ColumnDef<Appointment>[] = [
         id: "actions",
         header: () => <div className="pl-4">Actions</div>,
         cell: ({ row: { original: data } }) => {
+            if (!data.patient?.$id) {
+                return <p>No patient data</p>;
+            }
 
             return (
                 <div className="flex gap-1">

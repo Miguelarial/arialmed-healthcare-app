@@ -21,8 +21,6 @@ export enum FormFieldType {
     SKELETON = "skeleton"
 }
 
-
-
 const PatientForm = () => {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -42,9 +40,8 @@ const PatientForm = () => {
 
         try {
             const userData = { name, email, phone };
-            const user = await createUser(userData)
-
-            if (user) router.push(`/patients/${user.$id}/register`)
+            const newUser = await createUser(userData)
+            if (newUser) router.push(`/patients/${newUser.$id}/register`)
         } catch (error) {
             console.error('Error creating user:', error);
         } finally {
@@ -99,6 +96,5 @@ const PatientForm = () => {
         </Form>
     )
 }
-
 
 export default PatientForm
