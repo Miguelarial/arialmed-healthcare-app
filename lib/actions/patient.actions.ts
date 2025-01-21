@@ -17,6 +17,8 @@ import { parseStringify } from "../utils";
 
 export const createUser = async (user: CreateUserParams) => {
   try {
+    console.log('Attempting to create user:', { email: user.email });
+    
     const newuser = await users.create(
       ID.unique(),
       user.email,
@@ -25,16 +27,33 @@ export const createUser = async (user: CreateUserParams) => {
       user.name
     );
 
+    if (!newuser || !newuser.$id) {
+      throw new Error('Failed to create user: Invalid response');
+    }
+
+    console.log('User created successfully:', newuser.$id);
     return parseStringify(newuser);
   } catch (error: any) {
     if (error && error?.code === 409) {
+      console.log('User already exists, fetching existing user');
       const existingUser = await users.list([
         Query.equal("email", [user.email]),
       ]);
 
+      if (!existingUser || existingUser.users.length === 0) {
+        throw new Error('Failed to fetch existing user');
+      }
+
       return existingUser.users[0];
     }
-    console.error("An error occurred while creating a new user:", error);
+    
+    console.error("Error creating user:", {
+      code: error.code,
+      message: error.message,
+      details: error.response || error
+    });
+    
+    throw error; 
   }
 };
 
