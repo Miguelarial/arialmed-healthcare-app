@@ -38,15 +38,19 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         let formData;
 
-        if (values.identificationDocument && values.identificationDocument?.length > 0) {
+        if (
+            values.identificationDocument &&
+            values.identificationDocument.length > 0
+        ) {
             const blobFile = new Blob([values.identificationDocument[0]], {
-                type: values.identificationDocument[0].type,
-            })
-
+              type: values.identificationDocument[0].type,
+            });
+      
             formData = new FormData();
-            formData.append('blobFile', blobFile);
-            formData.append('fileName', values.identificationDocument[0].name)
+            formData.append("blobFile", blobFile);
+            formData.append("fileName", values.identificationDocument[0].name);
         }
+
         try {
             const patientData = {
                 userId: user.$id,
@@ -78,7 +82,9 @@ const RegisterForm = ({ user }: { user: User }) => {
 
             const patient = await registerPatient(patientData);
 
-            if (patient) router.push(`/patients/${user.$id}/new-appointment`)
+            if (patient) { 
+                router.push(`/patients/${user.$id}/new-appointment`)
+            }
         } catch (error) {
             console.log(error);
         } finally {
