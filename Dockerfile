@@ -1,13 +1,14 @@
 FROM node:18-alpine
 WORKDIR /app
 
-# Copy package files and install production dependencies
-COPY package*.json ./
-RUN npm install --production
+# Copy all source files
+COPY . .
 
-# Copy pre-built Next.js artifacts and public files
-COPY .next ./.next
-COPY public ./public
+# Install dependencies
+RUN npm install
+
+# Build the application
+RUN npm run build
 
 # Set runtime environment variables
 ENV PORT=3000
