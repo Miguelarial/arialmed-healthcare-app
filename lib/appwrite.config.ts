@@ -1,5 +1,24 @@
 import * as sdk from "node-appwrite"
 
+// Validate required environment variables
+const requiredEnvVars = {
+    PROJECT_ID: process.env.PROJECT_ID,
+    API_KEY: process.env.API_KEY,
+    DATABASE_ID: process.env.DATABASE_ID,
+    PATIENT_COLLECTION_ID: process.env.PATIENT_COLLECTION_ID,
+    DOCTOR_COLLECTION_ID: process.env.DOCTOR_COLLECTION_ID,
+    APPOINTMENT_COLLECTION_ID: process.env.APPOINTMENT_COLLECTION_ID,
+    BUCKET_ID: process.env.NEXT_PUBLIC_BUCKET_ID,
+    ENDPOINT: process.env.NEXT_PUBLIC_ENDPOINT,
+};
+
+// Check if any required variables are missing
+Object.entries(requiredEnvVars).forEach(([key, value]) => {
+    if (!value) {
+        throw new Error(`Missing required environment variable: ${key}`);
+    }
+});
+
 export const {
     PROJECT_ID,
     API_KEY,
@@ -7,9 +26,9 @@ export const {
     PATIENT_COLLECTION_ID,
     DOCTOR_COLLECTION_ID,
     APPOINTMENT_COLLECTION_ID,
-    NEXT_PUBLIC_BUCKET_ID: BUCKET_ID,
-    NEXT_PUBLIC_ENDPOINT: ENDPOINT,
-} = process.env;
+    BUCKET_ID,
+    ENDPOINT,
+} = requiredEnvVars;
 
 const client = new sdk.Client();
 

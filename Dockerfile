@@ -1,6 +1,9 @@
 FROM node:18-alpine
 WORKDIR /app
 
+# Copy environment variables file first
+COPY .env.production ./.env.production
+
 # Copy all source files
 COPY . .
 
@@ -14,9 +17,6 @@ RUN npm run build
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV NODE_ENV=production
-
-# Copy environment variables file
-COPY .env.production ./.env.production
 
 EXPOSE 3000
 
