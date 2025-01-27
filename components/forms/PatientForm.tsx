@@ -40,26 +40,11 @@ const PatientForm = () => {
 
         try {
             const userData = { name, email, phone };
-            console.log('Creating user with data:', { name, email, phone: phone.length });
-            
-            const newUser = await createUser(userData)
-            
-            if (!newUser) {
-                throw new Error('Failed to create user');
-            }
+            const user = await createUser(userData)
 
-            console.log('User created successfully:', newUser.$id);
-            
-            // Add a small delay before navigation
-            await new Promise(resolve => setTimeout(resolve, 100));
-            
-            const path = `/patients/${newUser.$id}/register`;
-            console.log('Navigating to:', path);
-            
-            await router.push(path);
+            if (user) router.push(`/patients/${user.$id}/register`)
         } catch (error) {
-            console.error('Error in form submission:', error);
-            
+            console.error('Error creating user:', error);
         } finally {
             setIsLoading(false);
         }
@@ -112,5 +97,6 @@ const PatientForm = () => {
         </Form>
     )
 }
+
 
 export default PatientForm

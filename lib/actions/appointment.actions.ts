@@ -17,8 +17,7 @@ export const createAppointment = async (appointment: CreateAppointmentParams) =>
 
         return parseStringify(newAppointment);
     } catch (error) {
-        console.error("Error creating appointment:", error);
-        throw error;
+        console.log(error);
     }
 }
 

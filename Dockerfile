@@ -1,23 +1,15 @@
-FROM node:18-alpine
+FROM node:18-alpine AS builder
 WORKDIR /app
-
-# Copy environment variables file first
-COPY .env.production ./.env.production
-
-# Copy all source files
+COPY package*.json ./
+RUN npm ci
 COPY . .
-
-# Install dependencies
-RUN npm install
-
-# Build the application
 RUN npm run build
 
-# Set runtime environment variables
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-ENV NODE_ENV=production
-
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package*.json ./
+RUN npm ci --only=production
 EXPOSE 3000
-
 CMD ["npm", "start"]

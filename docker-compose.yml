@@ -1,22 +1,12 @@
 version: '3.8'
+
 services:
-  web:
-    build: 
-      context: .
+  app:
+    image: kunigami21/arialmed:latest
+    restart: unless-stopped
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - PROJECT_ID=${PROJECT_ID}
       - API_KEY=${API_KEY}
-      - DATABASE_ID=${DATABASE_ID}
-      - PATIENT_COLLECTION_ID=${PATIENT_COLLECTION_ID}
-      - DOCTOR_COLLECTION_ID=${DOCTOR_COLLECTION_ID}
-      - APPOINTMENT_COLLECTION_ID=${APPOINTMENT_COLLECTION_ID}
-      - NEXT_PUBLIC_BUCKET_ID=${NEXT_PUBLIC_BUCKET_ID}
-      - NEXT_PUBLIC_ENDPOINT=${NEXT_PUBLIC_ENDPOINT}
-      - NEXT_PUBLIC_ADMIN_PASSKEY=${NEXT_PUBLIC_ADMIN_PASSKEY}
-      - NEXT_PUBLIC_SERVICEID=${NEXT_PUBLIC_SERVICEID}
-      - NEXT_PUBLIC_TEMPLATEID=${NEXT_PUBLIC_TEMPLATEID}
-      - NEXT_PUBLIC_APIKEY=${NEXT_PUBLIC_APIKEY}
-    restart: unless-stopped 
