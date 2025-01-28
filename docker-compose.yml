@@ -1,12 +1,16 @@
 version: '3.8'
-
 services:
-  app:
-    image: kunigami21/arialmed:latest
-    restart: unless-stopped
+  web:
+    build: 
+      context: .
+      target: builder
     ports:
       - "3000:3000"
+    env_file:
+      - .env.local
     environment:
-      - NODE_ENV=production
-      - PROJECT_ID=${PROJECT_ID}
-      - API_KEY=${API_KEY}
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next 
