@@ -14,9 +14,9 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
                 <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
                     <Image
                         src="/assets/icons/logo-full.svg"
-                        height={1000}
-                        width={1000}
-                        alt="Logo Image"
+                        height={32}
+                        width={162}
+                        alt="Logo"
                         className="mb-12 h-[var(--logo-height)] w-auto"
                     />
 

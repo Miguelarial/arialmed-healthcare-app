@@ -14,9 +14,9 @@ export default function Home({ searchParams }: SearchParamProps) {
         <div className="sub-container max-w-[496px]">
           <Image
             src="/assets/icons/logo-full.svg"
-            height={1000}
-            width={1000}
-            alt="Logo Image"
+            height={32}
+            width={162}
+            alt="Logo"
             className="mb-12 h-[var(--logo-height)] w-auto"
             priority
           />
