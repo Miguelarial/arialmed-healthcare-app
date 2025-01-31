@@ -1,0 +1,41 @@
+trigger:
+  - main
+
+variables:
+  - group: arialmed-var
+
+pool:
+  name: ProdPool
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cp /opt/secrets/.env.production .env.production
+  displayName: 'Copy env file'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Build Next.js app'
+
+- script: |
+    docker build -t arialmed:latest .
+  displayName: 'Build Docker Image'
+
+- script: |
+    docker stop arialmed || true
+    docker rm arialmed || true
+    docker run -d \
+      --name arialmed \
+      -p 80:3000 \
+      --restart unless-stopped \
+      --env-file /opt/secrets/.env.production \
+      -v /opt/secrets/.env.production:/app/.env.production \
+      -v /etc/ssl/private/arialmed.pem:/app/ssl/cert.pem \
+      -v /etc/ssl/private/arialmed.key:/app/ssl/key.pem \
+      arialmed:latest
+  displayName: 'Deploy Container'
