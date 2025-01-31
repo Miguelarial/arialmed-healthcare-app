@@ -18,7 +18,7 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
                             height={1000}
                             width={1000}
                             alt="Logo Image"
-                            className="h-[5vw] md:h-10 xl:h-8 w-fit mb-12 min-h-10"
+                            className="mb-12 h-10 w-fit"
                         />
 
                         <div>
@@ -49,7 +49,7 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
                         height={1000}
                         width={1000}
                         alt="Logo Image"
-                        className="h-[5vw] md:h-10 xl:h-8 w-fit mb-12 min-h-10"
+                        className="mb-12 h-10 w-fit"
                     />
 
                     <AppointmentForm
