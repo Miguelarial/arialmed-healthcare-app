@@ -18,6 +18,7 @@ export default function Home({ searchParams }: SearchParamProps) {
             width={1000}
             alt="Logo Image"
             className="mb-12 h-[var(--logo-height)] w-auto"
+            priority
           />
 
           <PatientForm />
