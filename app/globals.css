@@ -348,3 +348,13 @@
 .PhoneInputInput::placeholder {
   color: #1a1d21;
 }
+
+:root {
+  --logo-height: 60px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --logo-height: 80px;
+  }
+}

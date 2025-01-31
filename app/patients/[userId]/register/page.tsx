@@ -17,7 +17,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
                         height={1000}
                         width={1000}
                         alt="Logo Image"
-                        className="mb-12 h-[60px] w-[200px]"
+                        className="mb-12 h-[var(--logo-height)] w-auto"
                     />
 
                     <RegisterForm user={user} />
