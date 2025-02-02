@@ -3,6 +3,8 @@ trigger:
 
 variables:
   - group: arialmed-var
+  - name: DOCKER_IMAGE
+    value: kunigami21/arialmed
 
 pool:
   name: ProdPool
@@ -22,9 +24,21 @@ steps:
     npm run build
   displayName: 'Build Next.js app'
 
-- script: |
-    docker build -t arialmed:latest .
-  displayName: 'Build Docker Image'
+- task: Docker@2
+  displayName: Login to Docker Hub
+  inputs:
+    command: login
+    containerRegistry: arialmed-con
+
+- task: Docker@2
+  displayName: Build and Push Image
+  inputs:
+    command: buildAndPush
+    repository: $(DOCKER_IMAGE)
+    tags: |
+      latest
+    Dockerfile: Dockerfile
+    buildContext: .
 
 - script: |
     docker stop arialmed || true
@@ -37,5 +51,16 @@ steps:
       -v /opt/secrets/.env.production:/app/.env.production \
       -v /etc/ssl/private/arialmed.pem:/app/ssl/cert.pem \
       -v /etc/ssl/private/arialmed.key:/app/ssl/key.pem \
-      arialmed:latest
+      --env PROJECT_ID=$PROJECT_ID \
+      --env DATABASE_ID=$DATABASE_ID \
+      --env APPOINTMENT_COLLECTION_ID=$APPOINTMENT_COLLECTION_ID \
+      --env PATIENT_COLLECTION_ID=$PATIENT_COLLECTION_ID \
+      --env DOCTOR_COLLECTION_ID=$DOCTOR_COLLECTION_ID \
+      --env BUCKET_ID=$BUCKET_ID \
+      --env ENDPOINT=$ENDPOINT \
+      --env NEXT_PUBLIC_SERVICEID=$NEXT_PUBLIC_SERVICEID \
+      --env NEXT_PUBLIC_TEMPLATEID=$NEXT_PUBLIC_TEMPLATEID \
+      --env NEXT_PUBLIC_APIKEY=$NEXT_PUBLIC_APIKEY \
+      --env API_KEY=$API_KEY \
+      $(DOCKER_IMAGE):latest
   displayName: 'Deploy Container'

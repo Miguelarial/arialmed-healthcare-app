@@ -95,9 +95,11 @@ export const updateAppointment = async ({ userId, appointmentId, appointment, ty
             }
         `
 
-        await sendSMSNotification(userId, smsMessage);
+        await sendSMSNotification(userId, smsMessage).catch((error) => {
+            console.error("Failed to send SMS:", error);
+        });
 
-        revalidatePath("/admin");
+        revalidatePath("/", "layout");
         return parseStringify(updatedAppointment);
     } catch (error) {
         console.log(error);
