@@ -99,7 +99,7 @@ export const updateAppointment = async ({ userId, appointmentId, appointment, ty
             console.error("Failed to send SMS:", error);
         });
 
-        revalidatePath("/", "layout");
+        revalidatePath("/admin");
         return parseStringify(updatedAppointment);
     } catch (error) {
         console.log(error);

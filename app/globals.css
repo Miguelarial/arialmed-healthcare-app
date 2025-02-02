@@ -356,13 +356,13 @@
 /* Mobile devices */
 @media screen and (max-width: 480px) {
   :root {
-    --logo-height: 120px;
+    --logo-height: 60px;
   }
 }
 
 /* Tablets */
 @media screen and (min-width: 481px) and (max-width: 768px) {
   :root {
-    --logo-height: 120px;
+    --logo-height: 60px;
   }
 }
