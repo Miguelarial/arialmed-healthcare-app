@@ -44,6 +44,13 @@ A multi-tier web application, secure healthcare management platform built with N
 - SonarQube code analysis
 - Sentry error tracking
 
+### What I have learned 
+- Cloud Infrastructure Automation
+- CI/CD Best Practices
+- Docker Containerization
+- Scalable System Design
+
+
 ## Getting Started
 
 ### Prerequisites
