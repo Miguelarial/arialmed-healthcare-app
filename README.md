@@ -1,10 +1,8 @@
 # Arialmed - Healthcare Management System
 
-![Arialmed Logo](public/logo.png)
-
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Arialmed-2ea44f)](https://arialmed.xyz)
 
-A modern, secure healthcare management platform built with Next.js and Azure cloud infrastructure. The system provides comprehensive appointment management capabilities for both medical staff and patients.
+A multi-tier web application, secure healthcare management platform built with Next.js and Azure cloud infrastructure. The system provides comprehensive appointment management capabilities for both medical staff and patients. You can view the live demo [here](https://arialmed.xyz), and to access the admin dashboard, use the following passkey: 123456. The passkey will be changed in a week for security reasons.
 
 ## Features
 
@@ -58,8 +56,8 @@ A modern, secure healthcare management platform built with Next.js and Azure clo
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/arialmed.git
-cd arialmed
+git clone https://github.com/Miguelarial/arialmed-healthcare-app.git
+cd arialmed-healthcare-app
 ```
 
 2. Install dependencies:
