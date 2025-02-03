@@ -1,5 +1,9 @@
 # Arialmed - Healthcare Management System
 
+![Arialmed Logo](public/logo.png)
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Arialmed-2ea44f)](https://arialmed.xyz)
+
 A modern, secure healthcare management platform built with Next.js and Azure cloud infrastructure. The system provides comprehensive appointment management capabilities for both medical staff and patients.
 
 ## Features
