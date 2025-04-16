@@ -4,6 +4,25 @@
 
 A multi-tier web application, secure healthcare management platform built with Next.js and Azure cloud infrastructure. The system provides comprehensive appointment management capabilities for both medical staff and patients. You can view the live demo [here](https://arialmed.xyz), and to access the admin dashboard, use the following passkey: 123456. The passkey will be changed in a week for security reasons.
 
+## Application Screenshots
+
+### Landing Page
+![Landing Page](assets/screenshots/landing-page.png)
+*A modern and welcoming interface for scheduling your first appointment with our medical professionals*
+
+### Admin Dashboard
+![Admin Dashboard](public/assets/screenshots/admin-dashboard.png)
+*Comprehensive dashboard for medical staff to manage appointments, track patient schedules, and monitor cancellations*
+
+### Patient Pages
+#### Patient Information Form
+![Patient Information](public/assets/screenshots/patient-info.png)
+*Secure and user-friendly form for collecting patient details*
+
+#### Appointment Scheduling
+![New Appointment](public/assets/screenshots/new-appointment.png)
+*Intuitive interface for patients to schedule appointments with their preferred doctors*
+
 ## Features
 
 ### Patient Portal
@@ -11,7 +30,7 @@ A multi-tier web application, secure healthcare management platform built with N
 - Document upload with validation
 - Real-time notifications
 
-### Medical Staff Dashboard
+### Admin Dashboard
 - Comprehensive appointment management
 - Patient record access
 - Real-time analytics and reporting
@@ -49,7 +68,6 @@ A multi-tier web application, secure healthcare management platform built with N
 - CI/CD Best Practices
 - Docker Containerization
 - Scalable System Design
-
 
 ## Getting Started
 
