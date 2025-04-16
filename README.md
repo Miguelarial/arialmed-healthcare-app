@@ -7,7 +7,7 @@ A multi-tier web application, secure healthcare management platform built with N
 ## Application Screenshots
 
 ### Landing Page
-![Landing Page](assets/screenshots/landing-page.png)
+![Landing Page](public/assets/screenshots/landing-page.png)
 *A modern and welcoming interface for scheduling your first appointment with our medical professionals*
 
 ### Admin Dashboard
