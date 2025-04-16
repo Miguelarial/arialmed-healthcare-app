@@ -90,14 +90,9 @@ cd arialmed-healthcare-app
 npm install
 ```
 
-3. Set up environment variables:
+3. Create a `.env.local` file in the root directory. Copy the template below and replace the placeholder values with your actual credentials:
 ```bash
-cp .env.example .env.local
-```
-
-4. Configure your environment variables in `.env.local`
-```bash
-# Appwrite Configuration
+# Project Configuration
 PROJECT_ID=your_appwrite_project_id
 API_KEY=your_appwrite_api_key
 DATABASE_ID=your_database_id
@@ -105,7 +100,6 @@ PATIENT_COLLECTION_ID=appwrite_patients
 DOCTOR_COLLECTION_ID=appwrite_doctors
 APPOINTMENT_COLLECTION_ID=appwrite_appointments
 
-# Client-side Exposed Variables
 NEXT_PUBLIC_BUCKET_ID=appwrite_bucket_id
 NEXT_PUBLIC_ENDPOINT=https://your-appwrite-endpoint/v1
 NEXT_PUBLIC_SERVICEID=emailjs_service_id
@@ -116,7 +110,7 @@ NEXT_PUBLIC_APIKEY=emailjs_public_key
 NEXT_PUBLIC_ADMIN_PASSKEY=your_secure_passkey
 ```
 
-5. Run the development server:
+4. Run the development server:
 ```bash
 npm run dev
 

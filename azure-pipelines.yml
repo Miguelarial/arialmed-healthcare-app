@@ -51,16 +51,5 @@ steps:
       -v /opt/secrets/.env.production:/app/.env.production \
       -v /etc/ssl/private/arialmed.pem:/app/ssl/cert.pem \
       -v /etc/ssl/private/arialmed.key:/app/ssl/key.pem \
-      --env PROJECT_ID=$PROJECT_ID \
-      --env DATABASE_ID=$DATABASE_ID \
-      --env APPOINTMENT_COLLECTION_ID=$APPOINTMENT_COLLECTION_ID \
-      --env PATIENT_COLLECTION_ID=$PATIENT_COLLECTION_ID \
-      --env DOCTOR_COLLECTION_ID=$DOCTOR_COLLECTION_ID \
-      --env BUCKET_ID=$BUCKET_ID \
-      --env ENDPOINT=$ENDPOINT \
-      --env NEXT_PUBLIC_SERVICEID=$NEXT_PUBLIC_SERVICEID \
-      --env NEXT_PUBLIC_TEMPLATEID=$NEXT_PUBLIC_TEMPLATEID \
-      --env NEXT_PUBLIC_APIKEY=$NEXT_PUBLIC_APIKEY \
-      --env API_KEY=$API_KEY \
       $(DOCKER_IMAGE):latest
   displayName: 'Deploy Container'
